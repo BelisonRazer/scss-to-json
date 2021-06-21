@@ -6,7 +6,8 @@ var DeclarationStore = require('./declarationStore');
 var utilities = require('./utilities');
 
 var LINE_DELIMITER = '\n';
-var COMMENT_DELIMETER = '//';
+var COMMENT_DELIMETER = ['//', '/*'];
+var IMPORT = '@import';
 var EMPTY_LINES = ['', '\n', '\s'];
 
 function makeObject(declarations, options) {
@@ -27,7 +28,10 @@ function makeObject(declarations, options) {
 
 function filterLines(line) {
   return EMPTY_LINES.every(function(lineValue) {
-    return line !== lineValue && line.slice(0, 2) !== COMMENT_DELIMETER;
+    return line !== lineValue
+        && line.slice(0, 2) !== COMMENT_DELIMETER[0]
+        && line.slice(0, 2) !== COMMENT_DELIMETER[1]
+        && line.slice(0, 7) !== IMPORT;
   });
 }
 
