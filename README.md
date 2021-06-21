@@ -1,17 +1,15 @@
-[![Build Status](https://travis-ci.org/ryanbahniuk/scss-to-json.svg?branch=master)](https://travis-ci.org/ryanbahniuk/scss-to-json)
-
 # scss-to-json
 
 > A package to require SCSS variables in JSON format.
 
-This package allows you to use your SCSS variables in your JS code. Specifically, it takes a SCSS variable file (example below) and will parse, run Sass functions, and convert to JSON format. This package is a function that will make this conversion for you in memory. If you want to output JSON to your file system, you should use the associated [grunt-scss-to-json](https://www.npmjs.com/package/grunt-scss-to-json "grunt-scss-to-json") package.
+This package allows you to use your SCSS variables in your JS code. Specifically, it takes a SCSS variable file (example below) and will parse, run Sass functions, and convert to JSON format. This package is a function that will make this conversion for you in memory.
 
 ## Installation
 
 Install via npm:
 
  ```sh
-npm install scss-to-json
+npm install @domclick/scss-to-json
  ```
 
 ## Input and Output
@@ -48,7 +46,7 @@ Note that scss-to-json will filter out flags (marked with an !) and comments and
 In your CommonJS JavaScript file, requiring this package will return a function that takes a file path of your SCSS variables file. It also takes an optional options object, which is detailed in the next section.
 
 ```js
-var scssToJson = require('scss-to-json');
+var scssToJson = require('@domclick/scss-to-json');
 var path = require('path');
 
 var filePath = path.resolve(__dirname, 'colors.scss');
@@ -64,7 +62,7 @@ The second argument of the returned function is an optional options object. Each
 SCSS variables files sometimes rely on other SCSS variables defined earlier in your import tree. In order to keep these files isolated (and still produce JSON), you can specify an array of files that your given file depends on. For example, below we are trying to convert our color mapping file, but it depends on the actual color definitions which are found in a different file.
 
 ```js
-var scssToJson = require('scss-to-json');
+var scssToJson = require('@domclick/scss-to-json');
 var path = require('path');
 
 var filePath = path.resolve(__dirname, 'color-mapping.scss');
@@ -94,7 +92,7 @@ This will keep `$font-size` scoped locally inside that block, while allowing it 
 If you use this method in your SCSS variables file, you can provide an option to scss-to-json to output only the global variables to JSON. The option takes the name of the scoping placeholder as a string.
 
 ```js
-var scssToJson = require('scss-to-json');
+var scssToJson = require('@domclick/scss-to-json');
 var path = require('path');
 
 var filePath = path.resolve(__dirname, 'variables.scss');
@@ -106,16 +104,3 @@ var colors = scssToJson(filePath, {
 ## CLI
 
 You can also use the CLI `scss-to-json <file>`.
-
-
-## Contributing
-
-Pull requests are welcome. If you add functionality, then please add unit tests
-to cover it. Continuous Integration is handled by [Travis](https://travis-ci.org/ryanbahniuk/scss-to-json "Travis").
-
-## License
-
-MIT © Ryan Bahniuk
-
-[ci]:      https://travis-ci.org/ryanbahniuk/scss-to-json
-[npm]:     https://www.npmjs.com/package/scss-to-json

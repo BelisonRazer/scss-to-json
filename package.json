@@ -1,5 +1,5 @@
 {
-  "name": "scss-to-json",
+  "name": "@domclick/scss-to-json",
   "version": "1.0.0",
   "description": "A utility for converting SCSS variables files to JSON",
   "homepage": "https://github.com/BelisonRazer/scss-to-json",
@@ -43,5 +43,8 @@
   "scripts": {
     "test": "NODE_ENV=test mocha",
     "pretest": "eslint ."
+  },
+  "publishConfig": {
+    "@domclick:registry": "https://npm.sberned.ru/private/"
   }
 }
